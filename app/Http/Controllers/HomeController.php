@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use App\User;
+
 class Usuari {
     public $name,$sn1,$sn2;
 }
@@ -32,13 +34,18 @@ class HomeController extends Controller
 //  **** Però com és fàcil que haguessem de passar moltes variables,
 //       el més pràctic serà utilitzar una classe *****
 
+//        $user = new Usuari();
+//        $user->name="Guybrush";
+//        $user->sn1="Curto";
+//        $user->sn2="Threepwood";
+//
+//        return view('home')->withUser($user);
 
-        $user = new Usuari();
-        $user->name="Guybrush";
-        $user->sn1="Curto";
-        $user->sn2="Threepwood";
+        // Com a pràctica pot valdre, però lo seu és accedir a base de dades
 
-        return view('home')->withUser($user);
+            $user = User::find(1);
+
+            return view('home')->withUser($user);
 
     }
 }
