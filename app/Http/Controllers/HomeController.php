@@ -16,23 +16,9 @@ class HomeController extends Controller
 {
     public function index ()
     {
-        // OPCIÓ 1
-//        $name = 'Pepet';
-//        $data = ['username' => $name];
-//        return view ('home', $data);
-
-        // OPCIÓ 2
-//        $data = ['username' => 'Pepet'];
-//        return view ('home', $data);
-
-        // OPCIÓ 3
-//        return view ('home', ['username' => 'Pepet']);
-
-        // OPCIÓ 4
-//        return view ('home')->withUsername('Pepet')->withSurname('Curto');
-
-//  **** Però com és fàcil que haguessem de passar moltes variables,
-//       el més pràctic serà utilitzar una classe *****
+            // Passos controlador bàsic (glue entre model i vista)
+        // 1) Aconseguir informació de l'usuari de la base de dades
+        // 2) Mostrar vista home passant info del usuari
 
 //        $user = new Usuari();
 //        $user->name="Guybrush";
