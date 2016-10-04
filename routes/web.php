@@ -18,21 +18,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::loginUsingId(1);
-
-// MIDDLEWARE
-
-//  -Individual
-Route::get('/home', 'HomeController@index')->middleware('auth');
-
-//  -Grup
-Route::group(['middleware' => 'auth'] , function() {
-    Route::get('/home', 'HomeController@index')->middleware('auth');
-    Route::get('/home', 'HomeController@index')->middleware('auth');
-    Route::get('/home', 'HomeController@index')->middleware('auth');
-});
-
-
+Auth::loginUsingId(4);
+//Auth::logout();
 
 Route::get('/home', 'HomeController@index');
 Route::get('/login', 'LoginController@login');

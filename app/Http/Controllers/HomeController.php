@@ -23,7 +23,7 @@ class HomeController extends Controller
         // 1) Aconseguir informació de l'usuari de la base de dades
         // 2) Mostrar vista home passant info del usuari
 
-              $user = User::find(1);
+              $user = Auth::user();
               return view('home')
                   ->withUser($user);
 
