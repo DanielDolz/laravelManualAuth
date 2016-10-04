@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 
-@include('layouts.partials.htmlheader')
+@include('layouts.partials.header')
 
 <body>
 
@@ -10,6 +10,6 @@
 
 </body>
 
-@include('layouts.partials.htmlfooter')
+@include('layouts.partials.footer')
 
 </html>

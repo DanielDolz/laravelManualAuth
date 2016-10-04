@@ -3,14 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
-
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
-class Usuari {
-    public $name,$sn1,$sn2;
-}
 
 class HomeController extends Controller
 {
@@ -20,9 +16,21 @@ class HomeController extends Controller
         // 1) Aconseguir informació de l'usuari de la base de dades
         // 2) Mostrar vista home passant info del usuari
 
-            $user = User::find(2);
-            return view('home')
-                ->withUser($user);
+//      Auth::loginUsingId(1);
+//      Auth::logout();
 
+        // Middleware (porter de discoteca)
+
+        
+          if (Auth::check()) {
+              $user = User::find(1);
+              return view('home')
+                  ->withUser($user);
+          }else {
+              $user = new \stdClass();
+              $user->name = "Invitado";
+              return view('home')
+                  ->withUser($user);
+          }
     }
 }
