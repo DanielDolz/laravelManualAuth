@@ -41,26 +41,27 @@ class HomeController extends Controller
     }
 
     private function setUserCookie() {
-        $user = User::find(1);
-        setcookie('user',json_encode($user));
+        $user = User::findOrFail(1);
+        setcookie('user',$user->token);
     }
 
 
     private function getUser(){
-
             //Opció 4 : Client amb Cookie
-            $user = json_decode($_COOKIE['user']);
-            return $user;
-
+            $token = $_COOKIE['user'];
+            return User::where(["token" => $token])->first();
     }
 
     private function userIsAuthenticated()
     {
-            if (isset($_COOKIE['user'])) {
-                return true;
-            } else {
-                return false;
-            }
+            // Operador ternari (el mateix que el if/else de baix)
+            return isset($_COOKIE['user']) ? true : false;
+
+//            if (isset($_COOKIE['user'])) {
+//                return true;
+//            } else {
+//                return false;
+//            }
     }
 
 
