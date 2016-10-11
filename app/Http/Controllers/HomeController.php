@@ -23,9 +23,39 @@ class HomeController extends Controller
         // 1) Aconseguir informació de l'usuari de la base de dades
         // 2) Mostrar vista home passant info del usuari
 
-              $user = Auth::user();
-              return view('home')
-                  ->withUser($user);
+            // ESTAT SESSIÓ
+            if ($this->userIsAuthenticated()){
+                $user = $this->getUser();
+                return view('home')
+                    ->withUser($user);
+            } else {
+                return redirect('login');
+            }
+
+            // SINTAXI LITERAL -> definim l'objecte en JS (guardant-lo
+            //                    en un string mitjançant JSON)
+            // '{"name" : "Dani", "sn1" : "Dolz"}';
 
     }
+
+    private function getUser(){
+
+            //Opció 1 : query string $_GET
+            $id = $_GET['user'];
+            return User::findOrFail($id);
+
+//            dd(json_decode($_GET['user']));
+//            return json_decode($_GET['user']);
+    }
+
+    private function userIsAuthenticated()
+    {
+            if (isset($_GET['user'])) {
+                return true;
+            } else {
+                return false;
+            }
+    }
+
+
 }
