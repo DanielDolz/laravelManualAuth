@@ -18,11 +18,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::loginUsingId(4);
-//Auth::logout();
+//Auth::loginUsingId(4);
+Auth::logout();
 
 Route::get('/home', 'HomeController@index');
-Route::get('/login', 'LoginController@login');
+Route::get('/login', 'LoginController@showLoginForm');
+Route::post('/login', 'LoginController@login');
 Route::get('/register', 'RegisterController@register');
 
 //Route::get('/register', function () {
