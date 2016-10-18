@@ -20,7 +20,7 @@
         {{ csrf_field() }}
         <div class="form-group">
             User:
-            <input type="Usuari" name="Usuari">
+            <input type="Usuari" name="email">
         </div>
 
         <div class="form-group">

@@ -23,16 +23,17 @@ class HomeController extends Controller
         // 1) Aconseguir informació de l'usuari de la base de dades
         // 2) Mostrar vista home passant info del usuari
 
-            $this->setUserCookie();
-
-            // ESTAT SESSIÓ
-            if ($this->userIsAuthenticated()){
-                $user = $this->getUser();
-                return view('home')
-                    ->withUser($user);
-            } else {
-                return redirect('login');
-            }
+        return view('home');
+//            $this->setUserCookie();
+//
+//            // ESTAT SESSIÓ
+//            if ($this->userIsAuthenticated()){
+//                $user = $this->getUser();
+//                return view('home')
+//                    ->withUser($user);
+//            } else {
+//                return redirect('login');
+//            }
 
             // SINTAXI LITERAL -> definim l'objecte en JS (guardant-lo
             //                    en un string mitjançant JSON)
