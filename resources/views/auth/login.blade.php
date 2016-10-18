@@ -20,17 +20,17 @@
         {{ csrf_field() }}
         <div class="form-group">
             User:
-            <input type="user" name="user">
+            <input type="Usuari" name="Usuari">
         </div>
 
         <div class="form-group">
             Password:
-            <input type="password" name="password">
+            <input type="Password" name="Password">
         </div>
 
         <div class="form-group">
             Submit:
-            <input type="submit" value="Login" class="btn btn-primary">
+            <input type="submit" value="Login" class="btn btn-primary" name="login">
         </div>
 
     </form>
