@@ -11,6 +11,16 @@
 
 <body>
 
+@if (count($errors) > 0)
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 <div class="row">
     <div class="col-md-4"></div>
     <div class="col-md-4">
@@ -18,6 +28,7 @@
 
     <form action="/login" method="POST">
         {{ csrf_field() }}
+
         <div class="form-group">
             User:
             <input type="Usuari" name="email">
