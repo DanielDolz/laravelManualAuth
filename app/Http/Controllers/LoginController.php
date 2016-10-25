@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ManualAuth\Guard;
 use App\User;
 use Illuminate\Foundation\Testing\HttpException;
 use Illuminate\Http\Request;
@@ -12,6 +13,18 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class LoginController extends Controller
 {
+
+    protected $guard;
+
+    /**
+     * LoginController constructor.
+     * @param $guard
+     */
+    public function __construct(Guard $guard)
+    {
+        $this->guard = $guard;
+    }
+
     public function showLoginForm ()
     {
         return view ('auth.login');
@@ -23,11 +36,19 @@ class LoginController extends Controller
 
         $this->validateLogin($request);
 
+        $credentials = $request->only(['email','password']);
 
-        // 1) VALIDAR el formulari -> mirar quins camps son obligatoris, msg error, etc.
+        if ($this->guard->validate($credentials)) {
+            // OK TODO
+            $this->guard->setUser();
+        }
+
+        return redirect('login');
+
+        // 1) VALIDAR el formulari -> mirar quins camps son obligatoris, msg error, etc. -> Laravel Validation
         //                         -> mirar el nº d'intents (TODO)
-        // 2) DELEGAR intent Autenticació a un altre tenint en compte que poden haver
-        //            diferents User Providers (SQL, Ldap...):
+        // 2) DELEGAR intent Autenticació a un altre tenint en compte que poden haver diferents
+        //            User Providers (SQL, Ldap...):   --> Guard
         //                  OK ->  / Return to Home
         //                  NOT OK -> Redirect to login with error messages
 

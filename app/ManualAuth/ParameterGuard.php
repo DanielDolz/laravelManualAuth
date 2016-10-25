@@ -23,4 +23,14 @@ class ManualGuardByIdParameter implements Guard
             return true;
         }
     }
+
+    public function validate(array $credentials)
+    {
+        // TODO: Implement validate() method.
+    }
+
+    public function setUser($user)
+    {
+        // TODO: Implement setUser() method.
+    }
 }
