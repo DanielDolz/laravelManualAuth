@@ -18,15 +18,24 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Auth::loginUsingId(4);
-Auth::logout();
+// PAS 1 -> PROTEGIR PAGINES -> Middleware Auth
+Route::group(['middleware' => 'manualauth'], function () {
+    Route::get('/tasques', function ()    {
+        // Uses Auth Middleware
+        return view('tasques');
+    });
+});
 
-Route::get('/home', 'HomeController@index');
-Route::get('/login', 'LoginController@showLoginForm');
-Route::post('/login', 'LoginController@login');
-Route::get('/register', 'RegisterController@register');
 
-//Route::get('/register', function () {
-//    return view('auth.register');
-//});
+////Auth::loginUsingId(4);
+//Auth::logout();
+//
+//Route::get('/home', 'HomeController@index');
+//Route::get('/login', 'LoginController@showLoginForm');
+//Route::post('/login', 'LoginController@login');
+//Route::get('/register', 'RegisterController@register');
+//
+////Route::get('/register', function () {
+////    return view('auth.register');
+////});
 
