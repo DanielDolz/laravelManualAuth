@@ -14,18 +14,29 @@
 // CLOUSURES o FUNCIONS ANÒNIMES -> passem la funció function com a parametre
 // sense declarar-la ni posar-li nom.
 
+use App\User;
+
 Route::get('/', function () {
     return view('welcome');
 });
 
 // PAS 1 -> PROTEGIR PAGINES -> Middleware Auth
+
+$user = User::findOrFail(1);
+setcookie('user',$user->token);
+
 Route::group(['middleware' => 'manualauth'], function () {
-    Route::get('/tasques', function ()    {
+    Route::get('/tasques', function ()
+    {
         // Uses Auth Middleware
         return view('tasques');
     });
 });
 
+Route::get('/login', function ()    {
+    // Uses Auth Middleware
+    return view('login');
+});
 
 ////Auth::loginUsingId(4);
 //Auth::logout();

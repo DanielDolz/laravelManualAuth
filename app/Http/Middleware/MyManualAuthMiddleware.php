@@ -2,9 +2,10 @@
 
 namespace App\Http\Middleware;
 
+use App\ManualAuth\ManualGuard;
 use Closure;
 
-class ManualAuthMiddleware
+class MyManualAuthMiddleware
 {
     /**
      * Handle an incoming request.
@@ -15,6 +16,10 @@ class ManualAuthMiddleware
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        $manualGuard = new ManualGuard();
+        if ( $manualGuard->check() ) {
+            return $next($request);
+        }
+        return redirect('login');
     }
 }
