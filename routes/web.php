@@ -25,6 +25,8 @@ Route::get('/', function () {
 //$user = User::findOrFail(1);
 //setcookie('user',$user->token);
 
+// CONTAINER: app -> objecte que conté tota l'aplicació Laravel
+
 Route::group(['middleware' => 'manualauth'], function () {
     Route::get('/tasques', function ()
     {
