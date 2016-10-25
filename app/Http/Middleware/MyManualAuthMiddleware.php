@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\ManualAuth\ManualGuard;
+use App\ManualAuth\Guard;
 use Closure;
 
 class MyManualAuthMiddleware
@@ -13,7 +13,7 @@ class MyManualAuthMiddleware
      * MyManualAuthMiddleware constructor.
      * @param $manualGuard
      */
-    public function __construct(ManualGuard $manualGuard)
+    public function __construct(Guard $manualGuard)
     {
         $this->manualGuard = $manualGuard;
     }
