@@ -48,10 +48,9 @@ class LoginController extends Controller
         // 1) VALIDAR el formulari -> mirar quins camps son obligatoris, msg error, etc. -> Laravel Validation
         //                         -> mirar el nº d'intents (TODO)
         // 2) DELEGAR intent Autenticació a un altre tenint en compte que poden haver diferents
-        //            User Providers (SQL, Ldap...):   --> Guard
+        //            User Providers (SQL, Ldap...):   --> SetUser / UserProvider (TODO)
         //                  OK ->  / Return to Home
         //                  NOT OK -> Redirect to login with error messages
-
 
     }
 
