@@ -7,6 +7,17 @@ use Closure;
 
 class MyManualAuthMiddleware
 {
+    protected $manualGuard;
+
+    /**
+     * MyManualAuthMiddleware constructor.
+     * @param $manualGuard
+     */
+    public function __construct(ManualGuard $manualGuard)
+    {
+        $this->manualGuard = $manualGuard;
+    }
+
     /**
      * Handle an incoming request.
      *
@@ -17,7 +28,7 @@ class MyManualAuthMiddleware
     public function handle($request, Closure $next)
     {
         $manualGuard = new ManualGuard();
-        if ( $manualGuard->check() ) {
+        if ( $this->manualGuard->check() ) {
             return $next($request);
         }
         return redirect('login');

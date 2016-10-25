@@ -22,8 +22,8 @@ Route::get('/', function () {
 
 // PAS 1 -> PROTEGIR PAGINES -> Middleware Auth
 
-$user = User::findOrFail(1);
-setcookie('user',$user->token);
+//$user = User::findOrFail(1);
+//setcookie('user',$user->token);
 
 Route::group(['middleware' => 'manualauth'], function () {
     Route::get('/tasques', function ()
